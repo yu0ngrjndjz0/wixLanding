@@ -1,0 +1,54 @@
+@media (--pc) {
+  .wysiwyg {
+    .text {
+      &-huge {
+        font-size: rem(28);
+      }
+      &-big {
+        font-size: rem(24);
+      }
+      &-small {
+        font-size: rem(14);
+      }
+      &-tiny {
+        font-size: rem(12);
+      }
+      &-center {
+        text-align: center;
+      }
+      &-right {
+        text-align: right;
+      }
+      &-left {
+        text-align: left;
+      }
+    }
+  }
+}
+@media (--sp) {
+  .wysiwyg {
+    .text {
+      &-huge {
+        font-size: rem(38);
+      }
+      &-big {
+        font-size: rem(34);
+      }
+      &-small {
+        font-size: rem(24);
+      }
+      &-tiny {
+        font-size: rem(22);
+      }
+      &-center {
+        text-align: center;
+      }
+      &-right {
+        text-align: right;
+      }
+      &-left {
+        text-align: left;
+      }
+    }
+  }
+}

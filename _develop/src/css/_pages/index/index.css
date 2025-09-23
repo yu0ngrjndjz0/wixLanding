@@ -1,0 +1,124 @@
+@charset "utf-8";
+@import '../../_config/_media.css';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+}
+.section {
+  padding-block: pw(100);
+
+  &.-sec01 {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    background: var(--color_02);
+    .section__sub {
+      &.-sticky {
+      }
+    }
+  }
+  &.-sec02 {
+    position: relative;
+    background: var(--color_04);
+    height: 100vh;
+
+    z-index: 2;
+  }
+  &__heading {
+    margin-block-end: pw(30);
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    grid-gap: pw(100);
+  }
+  &__sub {
+    width: 60%;
+    &:nth-child(even) {
+      margin-inline-start: auto;
+    }
+  }
+}
+.mv {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  padding: 2%;
+  background: var(--color_03);
+  transition: transform 0.05s linear;
+  will-change: transform;
+  &__wrapper {
+    position: relative;
+    width: 100%;
+    background: #fff;
+    border-radius: pw(46) pw(46) pw(46) pw(46);
+    background-image: url('../images/common/mv-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  &__item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    &__inner {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      width: pw(150);
+      height: pw(150);
+      border-radius: 50%;
+
+      .mv__item1 & {
+        top: pw(400);
+        left: pw(200);
+        background: var(--color_01);
+      }
+      .mv__item2 & {
+        top: pw(500);
+        left: pw(600);
+        background: var(--color_02);
+      }
+      .mv__item3 & {
+        top: pw(100);
+        left: pw(1100);
+        background: #713e45;
+      }
+      .mv__item4 & {
+        top: pw(800);
+        left: pw(200);
+        background: var(--color_04);
+      }
+    }
+    &__text {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      margin-block-start: 50%;
+      margin-inline: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: var(--fontOpen);
+      font-size: pw(30);
+      line-height: 1.8;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      color: #666562;
+      will-change: clip-path;
+    }
+  }
+}

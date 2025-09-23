@@ -1,0 +1,120 @@
+//- Ruby tag
+mixin ruby(rb, rt)
+  <ruby>!{rb}<rt>!{rt}</rt></ruby>
+
+//- Breadcrumb
+mixin breadcrumb(data)
+  .breadcrumb
+    ul.breadcrumb-wrap
+      li.breadcrumb-items: a(href= "/" + subDirectory, class="link__alpha") トップ
+      each item in data
+        if item.link
+          li.breadcrumb-items: a(href= "/" + subDirectory + item.link, class="link__alpha")!= item.text
+        else
+          li.breadcrumb-items!= item.text
+
+//- Title
+mixin title(jp, en, classList)
+  h2.c-ttl(class= classList ? classList: '')
+    span.c-ttl__en!=jp
+    span.c-ttl__jp!=en
+
+//- Button
+mixin btn(link, text, modifier)
+  a(href="/" + subDirectory + link, class= modifier ? "c-btn c-btn--" + modifier : "c-btn")!= text
+
+//- Pagination
+mixin pagination(className)
+  .paging(class=className)
+    .paging-wrap
+      ul.paging-list
+        li.paging-icon.prev.disable: a(href="") Prev
+        li.paging-item.active: a(href="", class="paging-item__txt") 1
+        li.paging-item: a(href="", class="paging-item__txt") 2
+        li.paging-item: a(href="", class="paging-item__txt") 3
+        li.paging-item: span(class="paging-item__txt") ...
+        li.paging-item: a(href="", class="paging-item__txt") 5
+        li.paging-icon.next: a(href="") Next
+
+//- Input Type
+mixin inputType(data, name)
+  each item in data
+    div(class=item.type)
+      if name
+        input(type=item.type, id=item.id, name=name)
+      else
+        input(type=item.type, id=item.id)
+      label(for=item.id)!= item.text
+        if item.link
+          a(href="/" + subDirectory + item.link, class="link__alpha")!= item.linkText
+
+//- For menu
+mixin menu(listMenu)
+  ul
+    each menu in listMenu
+      if menu.menuSub
+        li.mega-menu
+          span.mega-label.toggleable(class=menu.class? menu.class : '')
+            if menu.icon
+              figure.icon
+                +img(menu.icon, menu.label).fit
+            span !{menu.label}
+            span.tog
+          ul.mega-list
+            each item in menu.menuSub
+              li: a(href="/"+subDirectory+item.link).link__alpha !{item.label}
+      else
+        li
+          if menu.isOutside
+            a(href=menu.link class=menu.class? menu.class : '' target="_blank" rel="noopener noreferrer").link__alpha
+              if menu.icon
+                figure.icon
+                  +img(menu.icon, menu.label).fit
+              span.text !{menu.label}
+          else
+            a(href="/"+subDirectory+menu.link)(class=menu.class? menu.class : '').link__alpha
+              if menu.icon
+                figure.icon
+                  +img(menu.icon, menu.label).fit
+              span.text !{menu.label}
+
+//- For menu
+mixin menuFooter(listMenu)
+  ul
+    each menu in listMenu
+      if menu.menuSub
+        li.mega-menu
+          span.mega-label(class=menu.class? menu.class : '')
+            if menu.icon
+              figure.icon
+                +img(menu.icon, menu.label).fit
+            span !{menu.label}
+            span.tog
+          ul.mega-list
+            each item in menu.menuSub
+              li: a(href="/"+subDirectory+item.link class=item.classSub ? item.classSub : '').link__alpha !{item.label}
+      else
+        li
+          if menu.isOutside
+            a(href=menu.link class=menu.class? menu.class : '' target="_blank" rel="noopener noreferrer").link__alpha
+              if menu.icon
+                figure.icon
+                  +img(menu.icon, menu.label).fit
+              span.text !{menu.label}
+          else
+            a(href="/"+subDirectory+menu.link)(class=menu.class? menu.class : '').link__alpha
+              if menu.icon
+                figure.icon
+                  +img(menu.icon, menu.label).fit
+              span.text !{menu.label}
+
+mixin mv(data)
+  .l-mv
+    .l-mv__mask
+    .row.row--sm
+      .row-bg
+      .row-ctn
+        h2.l-mv__ttl
+          span.en!= data.title.en
+          span.jp(class = data.title.flag ? "jp--" + data.title.flag : "")!= data.title.jp
+        +breadcrumb(data.breadcrumb)

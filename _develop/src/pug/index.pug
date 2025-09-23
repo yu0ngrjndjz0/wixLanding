@@ -1,0 +1,40 @@
+extends ./utils/_base.pug
+
+block append stylesheet
+  link(rel="stylesheet", href=assetPath + 'css/index.css')
+
+
+block main
+  .mv
+    .mv__wrapper#scene.scene
+      - var n = 1;
+      while n < 5
+        div(class=`layer mv__item mv__item${n}` data-depth=`${n*0.4}`)
+          .mv__item__inner Section #{n++}
+      .mv__item__text 
+        p PROFESSIONAL SKINCARE &amp;
+        p AESTHETIC MEDICINE LABORATORY
+    //  Pagination (bullets on right) 
+
+  .section.-sec01
+    .section__inner.row
+      .section__heading
+        h2 Section 01
+      .section__content
+        .section__sub
+          .section__sub__heading
+            h3 Section sub
+          .section__sub__content
+            p Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde ipsam reiciendis saepe enim natus numquam. Consequatur quidem labore, iusto laborum nulla inventore eius totam? Dignissimos architecto quaerat magnam minima explicabo?
+        .section__sub.-sticky
+          .section__sub__heading
+            h3 Section sub
+          .section__sub__content
+            p Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde ipsam reiciendis saepe enim natus numquam. Consequatur quidem labore, iusto laborum nulla inventore eius totam? Dignissimos architecto quaerat magnam minima explicabo?
+  .section.-sec02
+    .section__inner.row
+      .section__heading
+        h2 Section 02
+      .section__content
+        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos tenetur iste neque ex. Optio tempore accusamus voluptates doloribus maiores cumque maxime porro aliquam, at illum. Totam alias voluptates dolores fugit!
+        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos tenetur iste neque ex. Optio tempore accusamus voluptates doloribus maiores cumque maxime porro aliquam, at illum. Totam alias voluptates dolores fugit!

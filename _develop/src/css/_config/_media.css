@@ -1,0 +1,11 @@
+@custom-media --sp (max-width: 750px);
+@custom-media --tb (min-width: 751px) and (max-width: 1499px);
+@custom-media --pc (min-width: 1500px);
+
+@custom-media --hover (hover: hover);
+
+/*
+2つだけの時
+@custom-media --pc (min-width: 768px), print;
+@custom-media --sp only screen and (max-width: 767px);
+*/

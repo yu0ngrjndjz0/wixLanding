@@ -1,0 +1,38 @@
+extends ../utils/_base.pug
+
+block append meta
+  - var description = "";
+
+block append subTitle
+  - var pageTitle = "";
+
+block ld
+  +breadcrumbList([
+    { url: '/about/', name: 'ABOUT_US' }
+  ])
+
+block append stylesheet
+  link(rel="stylesheet", href=assetPath + 'css/index.css')
+
+block main
+  .swiper
+    .swiper-wrapper
+      .swiper-slide.s1
+        div
+          div(style="font-weight:700; margin-bottom:8px") Section 1
+          div(style="font-weight:400; font-size:16px") Vuốt lên/xuống hoặc dùng bánh xe chuột
+      .swiper-slide.s2
+        div
+          div(style="font-weight:700; margin-bottom:8px") Section 2
+          div(style="font-weight:400; font-size:16px") Hỗ trợ touch trên iPad / iPhone
+      .swiper-slide.s3
+        div
+          div(style="font-weight:700; margin-bottom:8px") Section 3
+          div(style="font-weight:400; font-size:16px") Keyboard (↑ ↓) + mousewheel
+      .swiper-slide.s4
+        div
+          div(style="font-weight:700; margin-bottom:8px") Section 4
+          div(style="font-weight:400; font-size:16px") Tùy biến animation bằng options
+    //  Pagination (bullets on right) 
+    .swiper-pagination
+  .hint Vuốt / Scroll / Phím mũi tên

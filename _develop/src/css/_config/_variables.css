@@ -1,0 +1,24 @@
+:root {
+  --leading-trim: calc((1em - 1lh) / 2);
+  --fontDefault: 'Montserrat', sans-serif;
+  --fontBodo: 'Bodoni Moda', serif;
+  --fontOpen: 'Open Sans', sans-serif;
+
+  --color_text: #000;
+  --color_01: #2c2c2d;
+  --color_02: #e9e9eb;
+  --color_03: #fdeff1;
+  --color_04: #e9cdd0;
+
+  --bgMenu: #fceee1;
+
+  --z_upper: 3000;
+  --z_middle: 2000;
+  --z_lower: 1000;
+}
+
+@supports not (top: 1lh) {
+  :root {
+    --leading-trim: 0px;
+  }
+}

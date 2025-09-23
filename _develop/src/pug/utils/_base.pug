@@ -1,0 +1,85 @@
+include ./_mixin.pug
+include ./_mixin_page.pug
+
+//- Error prevention. hasAnalysis is set to true when GA or analysis is added (to avoid human error).
+-
+  const isSSI = false;
+  const ogImageURL = 'assets/ogp.png';
+  const hasAnalysis = false;
+
+
+block meta
+  -
+    var title = "LANDING PAGE";
+    var description = "";
+    var url = "";
+
+
+block subTitle
+  - var pageTitle = ''
+
+block page404
+  - var noIndex = false;
+
+-
+  if (pageTitle.length) {
+    pageTitle = pageTitle + '｜';
+  }
+  ErrorCheck();
+
+doctype html
+html(lang='ja')
+  head
+    include ../assets/include/_ga.pug
+    include ../assets/include/_gtm-head.pug
+
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+
+    title #{pageTitle}#{title}
+
+    if noIndex
+      meta(name="robots" content="noindex, nofollow")
+
+    meta(http-equiv='x-ua-compatible' content='ie=edge')
+    meta(name="format-detection", content="telephone=no")
+    meta(name='Description', content=description)
+
+    meta(property='og:type', content='website')
+    meta(property='og:description', content=description)
+    meta(property='og:title', content=pageTitle+title)
+    meta(property='og:url', content=url)
+    meta(property='og:image', content=url+ogImageURL)
+    meta(property='og:locale', content='ja_JP')
+
+    meta(name='twitter:card', content='summary')
+    meta(name='twitter:description', content=description)
+
+    link(rel="icon" href= "/assets/favicon.ico" type="image/x-icon")
+
+    link(rel="preconnect", href="https://fonts.googleapis.com")
+    link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap", rel="stylesheet")
+    link(href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap", rel="stylesheet")
+
+    block stylesheet
+      link(rel="stylesheet", href=assetPath + 'css/common.css')
+
+  body
+    include ../assets/include/_gtm-body.pug
+    #root.root
+      if isSSI
+        != `\n\n      <!--#include virtual="${ assetPath }include/header.html" -->\n`
+      else
+        include ../assets/include/_header.pug
+
+      main.main
+        block main
+
+      if isSSI
+        != `\n\n      <!--#include virtual="${ assetPath }include/footer.html" -->\n`
+      else
+        include ../assets/include/_footer.pug
+
+    block script
+      script(src=assetPath + 'js/main.js', type="module")
