@@ -10,31 +10,37 @@ block main
       - var n = 1;
       while n < 5
         div(class=`layer mv__item mv__item${n}` data-depth=`${n*0.4}`)
-          .mv__item__inner Section #{n++}
-      .mv__item__text 
+          .mv__item__inner
+            +img(`images/common/mv-img_0${n}.png`, '').fit
+        - n++;
+      .mv__bg
+        .mv__mask01
+          +img('images/common/mv-bg-cloud3.png', 'Cloud').fit
+    .mv__item__text
+      .mv__item__text__inner
         p PROFESSIONAL SKINCARE &amp;
         p AESTHETIC MEDICINE LABORATORY
-    //  Pagination (bullets on right) 
 
-  .section.-sec01
+  .section.b-heath
     .section__inner.row
       .section__heading
-        h2 Section 01
+        h2 health, beauty &amp; aesthetics
       .section__content
-        .section__sub
-          .section__sub__heading
-            h3 Section sub
-          .section__sub__content
-            p Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde ipsam reiciendis saepe enim natus numquam. Consequatur quidem labore, iusto laborum nulla inventore eius totam? Dignissimos architecto quaerat magnam minima explicabo?
-        .section__sub.-sticky
-          .section__sub__heading
-            h3 Section sub
-          .section__sub__content
-            p Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde ipsam reiciendis saepe enim natus numquam. Consequatur quidem labore, iusto laborum nulla inventore eius totam? Dignissimos architecto quaerat magnam minima explicabo?
+        p We are a global manufacturer with 5.000 sqm headquarters in Spain and a strong international presence across Europe, Asia, the Middle East, and the Americas. We combine science, innovation, and expertise to deliver advanced solutions for skincare professionals and aesthetic medicine specialists.
+        p Our mission is to improve skin health worldwide by developing safe, effective, and innovative products for our own brands or act as a contract manufacturer with the highest standards of quality and regulatory compliance.
+  .section.b-vision.-sticky
+    .section__inner.row
+      .section__heading
+        h3 Our vision of the future
+      .section__content
+        p We are committed to redefining the future of professional aesthetics by combining science, safety and sustainability. Our expanding portfolio of injectables, sterile cosmetics, and at-home products supports both aesthetics and skin health professionals with high-quality, effective solutions.
+        p Beyond innovation, we empower professionals through education, business development, and digital connections, all while ensuring eco-responsibility guides everything we do.
+      .section__ill
+
   .section.-sec02
     .section__inner.row
       .section__heading
-        h2 Section 02
+        h2 Our vision of the future
       .section__content
         p Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos tenetur iste neque ex. Optio tempore accusamus voluptates doloribus maiores cumque maxime porro aliquam, at illum. Totam alias voluptates dolores fugit!
         p Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos tenetur iste neque ex. Optio tempore accusamus voluptates doloribus maiores cumque maxime porro aliquam, at illum. Totam alias voluptates dolores fugit!

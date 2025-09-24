@@ -1,5 +1,5 @@
 import Parallax from 'parallax-js';
-import {onScroll, stagger, animate} from 'animejs';
+// import {onScroll, stagger, animate} from 'animejs';
 
 export default class Index {
   /**
@@ -34,43 +34,66 @@ export default class Index {
     //   duration: 1920,
     // }, '&lt;');
 
-    animate('.mv__item__text', {
-      clipPath: ['inset(0 0 100%)', 'inset(0 0 0%)'],
-      duration: 1000,
-      delay: stagger(200),
-      easing: 'easeInOutQuad',
-      autoplay: onScroll({ sync: true })
-    });
-
+    // animate('.mv__item__text__inner', {
+    //   // clipPath: ['inset(0 0 100%)', 'inset(0 0 0%)'],
+    //   translateY: ['150px', '0px'],
+    //   duration: 1000,
+    //   delay: stagger(100),
+    //   easing: 'easeInOut',
+    //   autoplay: onScroll({ 
+    //     sync: true,
+    //     target: '.mv__item__text__inner',
+    //     axis: 'y',
+    //   })
+    // });
+    // animate('.mv__item__text', {
+    //   // clipPath: ['inset(0 0 100%)', 'inset(0 0 0%)'],
+    //   translateY: ['20px', '-100px'],
+    //   duration: 1000,
+    //   delay: stagger(100),
+    //   easing: 'easeInOut',
+    //   autoplay: onScroll({ sync: true })
+    // });
     // animate('.mv__wrapper', {
     //   translateY: ['0px', '100px'], // Điều chỉnh khoảng cách parallax ở đây
     //   duration: 2000,
     //   easing: 'easeInOutQuad',
     //   autoplay: onScroll({
     //     sync: true,
-        
     //   })
     // });
-    
 
-    
     this.parallaxMV();
     this.stickySection();
   }
 
   private parallaxMV = () => {
     const mv = document.querySelector('.mv');
-    const mvWrapper = document.querySelector('.mv__wrapper') as HTMLElement;
+    const mvWrapper = document.querySelector('.mv__bg') as HTMLElement;
+    const mvtext = document.querySelector('.mv__item__text__inner') as HTMLElement;
 
     if (!mv || !mvWrapper) return;
+    const mvtextHeight = mvtext.getBoundingClientRect().height;
+    mvtext.style.transform = `translateY(${mvtextHeight}px)`;
 
     const handleScroll = () => {
       const mvBounds = mv.getBoundingClientRect();
       if (mvBounds.top < 0) {
         const translateY = Math.abs(mvBounds.top) * 0.5;
+        // if( translateY <= 100) {
+        // } else {
+        //   mvtext.style.transform = `translateY(100px)`;
+        // }
         mvWrapper.style.transform = `translateY(${translateY}px)`;
+        
+        if( mvtextHeight - translateY > 0) {
+          mvtext.style.transform = `translateY(${mvtextHeight - translateY }px)`;
+        } else {
+          mvtext.style.transform = `translateY(0)`;
+        }
       } else {
         mvWrapper.style.transform = 'translateY(0)';
+        mvtext.style.transform = `translateY(${mvtextHeight}px)`;
       }
     };
 

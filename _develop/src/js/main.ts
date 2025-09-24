@@ -6,6 +6,7 @@ import DeviceWatcher from './utils/logic/device-watcher';
 import ScrollController from './utils/logic/scroll-controller';
 
 import AnchorLink from './utils/logic/anchor-link';
+import VhController from './utils/logic/vh-controller';
 
 new DeviceWatcher();
 new ScrollController();
@@ -42,6 +43,7 @@ export default class Main {
   constructor() {
     new Header();
     new AnchorLink();
+    new VhController();
     getComponent();
   }
 }

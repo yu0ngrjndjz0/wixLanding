@@ -12,24 +12,10 @@ body {
 }
 .section {
   padding-block: pw(100);
-
-  &.-sec01 {
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1;
-    background: var(--color_02);
-    .section__sub {
-      &.-sticky {
-      }
-    }
-  }
   &.-sec02 {
     position: relative;
     background: var(--color_04);
     height: 100vh;
-
     z-index: 2;
   }
   &__heading {
@@ -40,17 +26,11 @@ body {
     flex-direction: column;
     grid-gap: pw(100);
   }
-  &__sub {
-    width: 60%;
-    &:nth-child(even) {
-      margin-inline-start: auto;
-    }
-  }
 }
 .mv {
   display: flex;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
   padding: 2%;
   background: var(--color_03);
@@ -59,66 +39,122 @@ body {
   &__wrapper {
     position: relative;
     width: 100%;
-    background: #fff;
+    /* background: #fff;
+    border-radius: pw(46) pw(46) pw(46) pw(46); */
+  }
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     border-radius: pw(46) pw(46) pw(46) pw(46);
-    background-image: url('../images/common/mv-bg.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    background-color: #fff;
+    overflow: hidden;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('../images/common/mv-bg.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.27;
+      z-index: 1;
+    }
   }
   &__item {
     position: absolute;
     width: 100%;
     height: 100%;
+    z-index: 3;
     &__inner {
       position: absolute;
       display: flex;
       justify-content: center;
       align-items: center;
       color: #fff;
-      width: pw(150);
-      height: pw(150);
       border-radius: 50%;
 
       .mv__item1 & {
-        top: pw(400);
-        left: pw(200);
-        background: var(--color_01);
+        width: pw(234);
+        height: pw(329);
+        top: calc((200 / 858 * 100) * var(--vh));
+        left: pw(507);
       }
       .mv__item2 & {
-        top: pw(500);
-        left: pw(600);
-        background: var(--color_02);
+        width: pw(387);
+        height: pw(374);
+        top: calc((200 / 858 * 100) * var(--vh));
+        left: pw(118);
       }
       .mv__item3 & {
-        top: pw(100);
-        left: pw(1100);
-        background: #713e45;
+        width: pw(122);
+        height: pw(509);
+        top: calc((163 / 858 * 100) * var(--vh));
+        right: pw(473);
       }
       .mv__item4 & {
-        top: pw(800);
-        left: pw(200);
-        background: var(--color_04);
+        width: pw(216);
+        height: pw(481);
+        top: calc((-48 / 858 * 100) * var(--vh));
+        right: pw(228);
       }
     }
     &__text {
       position: absolute;
       left: 0;
-      top: 0;
+      bottom: pw(50);
       right: 0;
-      margin-block-start: 50%;
       margin-inline: auto;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      font-family: var(--fontOpen);
-      font-size: pw(30);
-      line-height: 1.8;
-      font-weight: 500;
-      letter-spacing: 0.35em;
-      color: #666562;
-      will-change: clip-path;
+      overflow: hidden;
+      z-index: 2;
+
+      &__inner {
+        font-family: var(--fontOpen);
+        font-size: rem(30);
+        line-height: 1.8;
+        font-weight: 400;
+        letter-spacing: 0.35em;
+        text-align: center;
+        color: #666562;
+        /* will-change: clip-path; */
+        transition: transform 0.05s linear;
+      }
     }
   }
+  &__mask01 {
+    position: absolute;
+    top: pw(304);
+    right: pw(338);
+    width: pw(500);
+    height: pw(368);
+    z-index: 2;
+  }
+  &__mask02 {
+    position: absolute;
+    top: pw(304);
+    left: pw(338);
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+  }
+}
+
+.b-heath {
+  width: 60%;
+}
+.b-vision {
+  position: sticky;
+  left: 0;
+  top: 0;
+  width: 60%;
+  margin-inline-start: auto;
 }
