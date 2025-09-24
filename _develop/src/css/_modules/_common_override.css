@@ -375,6 +375,18 @@
         14 14,
       auto;
   }
+
+  .intersect-elem {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  .rotate-in-down-left {
+    animation: rotate-in-down-left 1s ease;
+  }
 }
 
 @media (--sp) {

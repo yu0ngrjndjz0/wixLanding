@@ -153,3 +153,16 @@
     transform: rotate(0);
   }
 }
+
+@keyframes rotate-in-down-left {
+  0% {
+    transform-origin: left bottom;
+    transform: rotate(45deg);
+    clip-path: inset(0% 0% 100% 0%);
+  }
+  100% {
+    transform-origin: left bottom;
+    transform: rotate(0);
+    clip-path: inset(0% 0% 0% 0%);
+  }
+}

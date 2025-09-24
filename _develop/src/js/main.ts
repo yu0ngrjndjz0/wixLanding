@@ -7,6 +7,7 @@ import ScrollController from './utils/logic/scroll-controller';
 
 import AnchorLink from './utils/logic/anchor-link';
 import VhController from './utils/logic/vh-controller';
+import IntersectElements from './utils/logic/intersect-elem';
 
 new DeviceWatcher();
 new ScrollController();
@@ -44,6 +45,7 @@ export default class Main {
     new Header();
     new AnchorLink();
     new VhController();
+    new IntersectElements();
     getComponent();
   }
 }
