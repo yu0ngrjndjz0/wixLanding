@@ -1,6 +1,6 @@
-@custom-media --sp (max-width: 750px);
-@custom-media --tb (min-width: 751px) and (max-width: 1499px);
-@custom-media --pc (min-width: 1500px);
+@custom-media --sp (max-width: 768px);
+@custom-media --tb (min-width: 769px) and (max-width: 1366px);
+@custom-media --pc (min-width: 1367px);
 
 @custom-media --hover (hover: hover);
 

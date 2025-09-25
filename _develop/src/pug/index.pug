@@ -54,19 +54,21 @@ block main
               text: 'Advanced skin resurfacing solutions, including professional peelings, sunscreens, and essential skin care products designed to optimize the skin’s pH and support a healthy microbiome for radiant, glowing skin. All our formulations are crafted exclusively with natural organic acids, ensuring both safety and efficacy.',
               link: 'https://ekseptionskincare.com/en/home-page/',
               btnTxt: 'VISIT WEBSITE',
+              blank: true
             },
             {
               img: 'img-02.png',
               logo: 'logo-02.png',
               text: 'Class III injectable medical devices, sterile cosmetic vials for use in synergy with microneedling and energy-based devices, and advanced skincare solutions to prepare and repair the skin after aesthetic medicine procedures. All our formulations are exclusively based on active ingredients from aesthetic medicine, including hyaluronic acid, peptides, amino acids, and vitamins.',
-              link: 'https://ekseptionskincare.com/en/home-page/',
+              link: 'https://fusionmeso.com/',
               btnTxt: 'VISIT WEBSITE',
+              blank: true
             },
             {
               img: 'img-03.png',
               logoText: 'Private labelling',
               text: 'Contract manufacturing services for third parties wishing to create their own brand or outsource their production. We provide complete solutions from formulation to packaging, with the ability to manufacture in sterile or non-sterile vials, tubes, jars, sachets and bottles.',
-              link: 'https://ekseptionskincare.com/en/home-page/',
+              link: '#contact',
               btnTxt: 'Contact Us',
             }
           ]
@@ -82,9 +84,12 @@ block main
                 figure.c-card__logo
                   +img(`images/common/${item.logo}`, '').fit
               .c-card__btn
-                a.c-btn(href=item.link target="_blank") !{item.btnTxt}
+                if (item.blank)
+                  a.c-btn(href=item.link target="_blank") !{item.btnTxt}
+                else
+                  a.c-btn(href=item.link) !{item.btnTxt}
   .section.b-change#change
-    .section__inner.row
+    .section__inner
       .section__heading.layer(data-depth="0.2")
         h2.section__heading__text.intersect-elem.rotate-in-down-left We are changemakers
       .section__content
@@ -129,12 +134,19 @@ block main
       .section__heading
         h2.section__heading__text.intersect-elem.rotate-in-down-left Our brands on Instagram
       .section__content
-        p HB Aesthetics Group is supported by strong and long-term financial partners who share our vision of sustainable international growth and help us to establish an ambitious ESG policy. These partnerships ensure financial stability, governance, and the resources required to strengthen our innovation pipeline and expand into new markets worldwide.
-        p Amethis, part of Edmond de Rothschild bank – supporting global expansion with a focus on responsible investment.
-        p Siparex – a leading private equity firm with deep expertise in mid-market companies and international scaling.
-  .b-contact#contact
-    .b-contact__inner
-      p HB Aesthetics Group is supported by strong and long-term financial partners who share our vision of sustainable international growth and help us to establish an ambitious ESG policy. These partnerships ensure financial stability, governance, and the resources required to strengthen our innovation pipeline and expand into new markets worldwide.
-      p Amethis, part of Edmond de Rothschild bank – supporting global expansion with a focus on responsible investment.
-      p Siparex – a leading private equity firm with deep expertise in mid-market companies and international scaling.
+        -
+          var brandList = [
+            {
+              txt: 'FUSION MESO',
+              link: 'https://www.instagram.com/fusionmeso_official/',
+            },
+            {
+              txt: 'ekseption',
+              link: 'https://www.instagram.com/ekseption_official/',
+            },
+          ]
+        .b-brand__list 
+          each item in brandList
+            .b-brand__item
+              a.c-btn(href=item.link target="_blank") !{item.txt}
 

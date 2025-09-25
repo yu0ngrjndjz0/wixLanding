@@ -9,6 +9,9 @@ export default class Header {
   private winHeight: number;
   private isOpen: boolean;
   private openSubTriggers: HTMLElement[];
+  private lastScrollTop: number;
+  private scrollDownDistance: number;
+  private scrollUpDistance: number;
 
   constructor() {
     this.target = document.getElementById('js-hamburger');
@@ -18,22 +21,25 @@ export default class Header {
     this.isOpen = false;
     this.winWidth = window.innerWidth;
     this.winHeight = window.innerHeight;
+    this.lastScrollTop = 0;
+    this.scrollDownDistance = 0;
+    this.scrollUpDistance = 0;
     this.init();
   }
 
   private init = () => {
-    if (!this.target) return;
+    if (!this.header) return;
     this.activeMenu();
     this.handleToggleSub();
     this.addClickEventsToLink();
-    this.target.addEventListener('click', this.handleToggleBurger, false);
+    
 
     window.addEventListener(
       'resize',
       () => {
         if (this.winWidth !== window.innerWidth) {
           this.winWidth = window.innerWidth;
-          this.Sticky();
+          // this.Sticky();
           this.changeMenuDevice();
         }
         if (this.winHeight !== window.innerHeight) {
@@ -43,8 +49,10 @@ export default class Header {
       },
       false
     );
-    window.addEventListener('load', this.Sticky, false);
+    // window.addEventListener('load', this.Sticky, false);
     window.addEventListener('scroll', this.Sticky, false);
+    if (!this.target) return;
+    this.target.addEventListener('click', this.handleToggleBurger, false);
   };
 
   private addClickEventsToLink() {
@@ -101,12 +109,29 @@ export default class Header {
 
   private Sticky = () => {
     if (!this.header) return;
-
-    if (window.pageYOffset > 0) {
-      this.header?.classList.add('fixed');
-    } else {
-      this.header?.classList.remove('fixed');
+    
+    const currentScrollTop = window.pageYOffset;
+    
+    // Check scroll direction
+    if (currentScrollTop > this.lastScrollTop) {
+      // Scrolling down
+      this.scrollDownDistance += currentScrollTop - this.lastScrollTop;
+      this.scrollUpDistance = 0; // Reset up distance
+      
+      if (this.scrollDownDistance >= 500) {
+        this.header.classList.add('fixed');
+      }
+    } else if (currentScrollTop < this.lastScrollTop) {
+      // Scrolling up
+      this.scrollUpDistance += this.lastScrollTop - currentScrollTop;
+      this.scrollDownDistance = 0; // Reset down distance
+      
+      if (this.scrollUpDistance >= 200) {
+        this.header.classList.remove('fixed');
+      }
     }
+
+    this.lastScrollTop = currentScrollTop;
   };
 
   private setHeightMenu = () => {

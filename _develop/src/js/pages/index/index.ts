@@ -133,11 +133,11 @@ export default class Index {
         const sectionHeight = rect.height;
         const viewportProgress = Math.max(0, Math.min(1, (windowHeight - sectionTop) / (windowHeight + sectionHeight)));
         // Apply progressive animation based on scroll
-        const tipX = -120 + (120 * viewportProgress * 1.8);
-        const tipY = 120 - (120 * viewportProgress * 1.8);
+        const tipX = -150 + (150 * viewportProgress * 1.8);
+        const tipY = 150 - (150 * viewportProgress * 1.8);
         // const capX = 60 - (60 * viewportProgress * 2);
         // const capY = -60 + (60 * viewportProgress * 2);
-        if((120 * viewportProgress * 1.8) > 120) {
+        if((150 * viewportProgress * 1.8) > 150) {
           penTip.style.transform = 'translate3d(0, 0, 0)';
         } else {
           penTip.style.transform = `translate3d(${tipX}px, ${tipY}px, 0)`;

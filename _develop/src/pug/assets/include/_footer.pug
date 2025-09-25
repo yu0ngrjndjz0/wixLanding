@@ -2,8 +2,7 @@ include ../../utils/_mixin.pug
 
 
 footer.footer#footer
-  .footer__wrap
-    .footer__top
+  .footer__wrap#contact
       .footer__contact
         p.footer__ttl Let’s Stay in Touch
         a(href="mailto:contact@hb-aesthetics.com") contact@hb-aesthetics.com
@@ -15,10 +14,10 @@ footer.footer#footer
           br
           | TEL. 
           a(href="tel:+(34)972547113") +(34) 972547113
-
-    .footer__bottom
-      p.footer__copyright &copy; 2025 by HB aesthetics
+      .footer__copyright 
+        p &copy; 2025 by HB aesthetics
       .scrollToTop
         a(href="#root").scrollToTop__link.link__alpha
-          .scrollToTop--icon 
-          p.scrollToTop--jp Back to Top
+          figure.scrollToTop--icon
+            +img('images/common/backtop.svg').fit
+          p.scrollToTop--text Back to Top

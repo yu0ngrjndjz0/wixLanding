@@ -40,6 +40,10 @@ module.exports = {
           if (Math.abs(num) <= vwPassThroughRatio) return `${num}px`;
           return `${getRoundedVw((num / desktopBaseWidth) * 100)}vw`;
         },
+        pcw(num) {
+          if (Math.abs(num) <= vwPassThroughRatio) return `${num}px`;
+          return `${getRoundedVw((num / desktopBaseWidth) * 100)}vw`;
+        },
         vw(num) {
           if (Math.abs(num) <= vwPassThroughRatio) return `${num}px`;
           return `${getRoundedVw((num / mobileBaseWidth) * 100)}vw`;
