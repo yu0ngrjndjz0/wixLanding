@@ -1,5 +1,5 @@
 import Parallax from 'parallax-js';
-import {animate} from 'animejs';
+// import {animate} from 'animejs';
 
 export default class Index {
   /**
@@ -15,7 +15,24 @@ export default class Index {
       frictionX: .01,
       frictionY: .01
     });
-
+    const change = document.getElementById('change');
+    new Parallax(change, {
+      selector: '.layer',
+      pointerEvents: true,
+      relativeInput: true,
+      hoverOnly: true,
+      frictionX: .02,
+      frictionY: .02,
+    });
+    const partners = document.getElementById('partners');
+    new Parallax(partners, {
+      selector: '.layer',
+      pointerEvents: true,
+      relativeInput: true,
+      hoverOnly: true,
+      frictionX: .02,
+      frictionY: .02,
+    });
    
 
     // animate('.square', {
@@ -72,10 +89,6 @@ export default class Index {
       const mvBounds = mv.getBoundingClientRect();
       if (mvBounds.top < 0) {
         const translateY = Math.abs(mvBounds.top) * 0.5;
-        // if( translateY <= 100) {
-        // } else {
-        //   mvtext.style.transform = `translateY(100px)`;
-        // }
         mvWrapper.style.transform = `translateY(${translateY}px)`;
         if( mvtextHeight - translateY > 0) {
           mvtext.style.transform = `translateY(${mvtextHeight - translateY }px)`;
@@ -98,18 +111,15 @@ export default class Index {
     const penSection = document.querySelector('.b-vision__ill');
     const penTip = document.querySelector('.b-vision__ill__item01') as HTMLElement;
     // const penCap = document.querySelector('.b-vision__ill__item02') as HTMLElement;
-    
-    if (!penSection || !penTip) return;
+    if (!penSection || !penTip ) return;
 
     let isInView = false;
 
     const handleScroll = () => {
       const rect = penSection.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-      
       // Check if pen section is in viewport
-      const isVisible = rect.top < windowHeight && rect.bottom > 0;
-      
+      const isVisible = rect.top < windowHeight;
       if (isVisible && !isInView) {
         // First time entering viewport - reset positions
         isInView = true;
@@ -117,19 +127,17 @@ export default class Index {
         // Left viewport
         isInView = false;
       }
-      
       if (isVisible) {
         // Calculate scroll progress within the section
         const sectionTop = rect.top;
         const sectionHeight = rect.height;
         const viewportProgress = Math.max(0, Math.min(1, (windowHeight - sectionTop) / (windowHeight + sectionHeight)));
-        
         // Apply progressive animation based on scroll
-        const tipX = -120 + (120 * viewportProgress * 2);
-        const tipY = 120 - (120 * viewportProgress * 2);
+        const tipX = -120 + (120 * viewportProgress * 1.8);
+        const tipY = 120 - (120 * viewportProgress * 1.8);
         // const capX = 60 - (60 * viewportProgress * 2);
         // const capY = -60 + (60 * viewportProgress * 2);
-        if((120 * viewportProgress * 2) > 120) {
+        if((120 * viewportProgress * 1.8) > 120) {
           penTip.style.transform = 'translate3d(0, 0, 0)';
         } else {
           penTip.style.transform = `translate3d(${tipX}px, ${tipY}px, 0)`;
@@ -142,51 +150,4 @@ export default class Index {
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Check initial state
   }
-
-  /**
-   * Initialize clipped element animation - Text Color Reveal Effect
-   */
-  
-
-  // private stickySection = () => {
-  //   // Handle sticky section
-  //   const sec1 = document.querySelector('.section.-sec01');
-  //   const secSub = document.querySelectorAll('.section__sub');
-  //   const sec2 = document.querySelector('.section.-sec02');
-  //   // if (sections.length >= 2) {
-  //     const secondSection = secSub[1];
-  //     // animate(secondSection, {
-  //     //   translateY: ['0%', '100%'],  // Start and end at same position
-  //     //   duration: 1000,
-  //     //   delay: stagger(200),
-  //     //   easing: 'easeInOutQuad',
-  //     //   autoplay: onScroll({ sync: true })  // We'll control this with scroll
-  //     // });
-
-  //     // Add sticky class when element comes into view
-  //     if (!sec1 || !sec2 || !secondSection) return;
-  //     // Lấy vị trí top của section
-  //     // const sec1Bounds = sec1.getBoundingClientRect();
-  //     // const topValue = sec1Bounds.top;
-
-  //     // // Gán giá trị top negative cho section khi sticky
-  //     // (sec1 as HTMLElement).style.setProperty('--sticky-top', `${-topValue}px`);
-
-  //     // const observer = new IntersectionObserver((entries) => {
-  //     //   entries.forEach(entry => {
-  //     //     if (entry.isIntersecting) {
-  //     //       sec1?.classList.add('-sticky');
-  //     //       // Cập nhật lại top mỗi khi intersection thay đổi
-  //     //       // const newBounds = sec1.getBoundingClientRect();
-  //     //       // (sec1 as HTMLElement).style.setProperty('--sticky-top', `${-newBounds.top}px`);
-  //     //     } else {
-  //     //       sec1?.classList.remove('-sticky');
-  //     //     }
-  //     //   });
-  //     // }, {
-  //     //   threshold: 0.1  // Trigger when 10% of element is visible
-  //     // });
-
-  //     // observer.observe(sec2);
-  // }
 }

@@ -46,5 +46,95 @@ block main
       .section__heading
         h2.section__heading__text.intersect-elem.rotate-in-down-left Discover our brands
       .section__content
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos tenetur iste neque ex. Optio tempore accusamus voluptates doloribus maiores cumque maxime porro aliquam, at illum. Totam alias voluptates dolores fugit!
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos tenetur iste neque ex. Optio tempore accusamus voluptates doloribus maiores cumque maxime porro aliquam, at illum. Totam alias voluptates dolores fugit!
+        -
+          var cardList = [
+            {
+              img: 'img-01.png',
+              logo: 'logo-01.png',
+              text: 'Advanced skin resurfacing solutions, including professional peelings, sunscreens, and essential skin care products designed to optimize the skin’s pH and support a healthy microbiome for radiant, glowing skin. All our formulations are crafted exclusively with natural organic acids, ensuring both safety and efficacy.',
+              link: 'https://ekseptionskincare.com/en/home-page/',
+              btnTxt: 'VISIT WEBSITE',
+            },
+            {
+              img: 'img-02.png',
+              logo: 'logo-02.png',
+              text: 'Class III injectable medical devices, sterile cosmetic vials for use in synergy with microneedling and energy-based devices, and advanced skincare solutions to prepare and repair the skin after aesthetic medicine procedures. All our formulations are exclusively based on active ingredients from aesthetic medicine, including hyaluronic acid, peptides, amino acids, and vitamins.',
+              link: 'https://ekseptionskincare.com/en/home-page/',
+              btnTxt: 'VISIT WEBSITE',
+            },
+            {
+              img: 'img-03.png',
+              logoText: 'Private labelling',
+              text: 'Contract manufacturing services for third parties wishing to create their own brand or outsource their production. We provide complete solutions from formulation to packaging, with the ability to manufacture in sterile or non-sterile vials, tubes, jars, sachets and bottles.',
+              link: 'https://ekseptionskincare.com/en/home-page/',
+              btnTxt: 'Contact Us',
+            }
+          ]
+        .c-card__list 
+          each item in cardList 
+            .c-card__item
+              figure.c-card__photo
+                +img(`images/common/${item.img}`,'').fit
+              p.c-card__text !{item.text}
+              if item.logoText
+                h3.c-card__logo.-text !{item.logoText}
+              else
+                figure.c-card__logo
+                  +img(`images/common/${item.logo}`, '').fit
+              .c-card__btn
+                a.c-btn(href=item.link target="_blank") !{item.btnTxt}
+  .section.b-change#change
+    .section__inner.row
+      .section__heading.layer(data-depth="0.2")
+        h2.section__heading__text.intersect-elem.rotate-in-down-left We are changemakers
+      .section__content
+        .b-change__catch
+          p.layer(data-depth="0.2") Highly recognized for the uncompromising quality of our products, our agility in responding to market needs, and our constant drive for innovation.
+          p.layer(data-depth="0.2") Always ahead of trends, we integrate the most novel, scientifically validated ingredients — carefully evaluated and masterfully formulated — to deliver effective, safe, and pioneering solutions for professionals worldwide.
+
+        .b-change__list
+          .b-change__item.layer(data-depth="0.1") 
+            span.b-change__ttl Global presence
+            span.b-change__count +70
+            span.b-change__text Coutries where our brands operate
+          .b-change__item.layer(data-depth="0.1") 
+            span.b-change__ttl Leader in vials
+            span.b-change__count +1M
+            span.b-change__text vials sold per year
+          .b-change__item.layer(data-depth="0.1") 
+            span.b-change__ttl Overall satisfaction
+            span.b-change__count 9,5
+            span.b-change__text Average customer rating (out of 10)
+          .b-change__item.layer(data-depth="0.1") 
+            span.b-change__ttl Trusted by over 
+            span.b-change__count +20K
+            span.b-change__text Aesthetic professionals
+
+
+  .section.b-partners#partners
+    .section__inner
+      .section__heading
+        h2.section__heading__text.intersect-elem.rotate-in-down-left Our partners
+      .section__content
+        p HB Aesthetics Group is supported by strong and long-term financial partners who share our vision of sustainable international growth and help us to establish an ambitious ESG policy. These partnerships ensure financial stability, governance, and the resources required to strengthen our innovation pipeline and expand into new markets worldwide.
+        p Amethis, part of Edmond de Rothschild bank – supporting global expansion with a focus on responsible investment.
+        p Siparex – a leading private equity firm with deep expertise in mid-market companies and international scaling.
+    .b-partners__photo
+      figure.b-partners__photo--item.-item01.layer(data-depth="0.2")
+        +img("images/common/partners-img-01.png", '').fit
+      figure.b-partners__photo--item.-item02.layer(data-depth="0.4")
+        +img("images/common/partners-img-02.png", '').fit
+  .section.b-brand#brand
+    .section__inner
+      .section__heading
+        h2.section__heading__text.intersect-elem.rotate-in-down-left Our brands on Instagram
+      .section__content
+        p HB Aesthetics Group is supported by strong and long-term financial partners who share our vision of sustainable international growth and help us to establish an ambitious ESG policy. These partnerships ensure financial stability, governance, and the resources required to strengthen our innovation pipeline and expand into new markets worldwide.
+        p Amethis, part of Edmond de Rothschild bank – supporting global expansion with a focus on responsible investment.
+        p Siparex – a leading private equity firm with deep expertise in mid-market companies and international scaling.
+  .b-contact#contact
+    .b-contact__inner
+      p HB Aesthetics Group is supported by strong and long-term financial partners who share our vision of sustainable international growth and help us to establish an ambitious ESG policy. These partnerships ensure financial stability, governance, and the resources required to strengthen our innovation pipeline and expand into new markets worldwide.
+      p Amethis, part of Edmond de Rothschild bank – supporting global expansion with a focus on responsible investment.
+      p Siparex – a leading private equity firm with deep expertise in mid-market companies and international scaling.
+
