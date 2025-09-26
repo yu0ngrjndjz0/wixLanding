@@ -5,7 +5,13 @@ export default class Index {
   /**
    * Creates an instance of Index.
    */
+  private changeSection: Parallax | null;
+  private winWidth: number;
+  private mobileChangeScrollHandler?: () => void;
   constructor() {
+
+    this.changeSection = null;
+    this.winWidth = window.innerWidth;
     const scene = document.getElementById('scene');
     new Parallax(scene, {
       selector: '.layer',
@@ -15,15 +21,7 @@ export default class Index {
       frictionX: .01,
       frictionY: .01
     });
-    const change = document.getElementById('change');
-    new Parallax(change, {
-      selector: '.layer',
-      pointerEvents: true,
-      relativeInput: true,
-      hoverOnly: true,
-      frictionX: .02,
-      frictionY: .02,
-    });
+    
     const partners = document.getElementById('partners');
     new Parallax(partners, {
       selector: '.layer',
@@ -33,47 +31,24 @@ export default class Index {
       frictionX: .02,
       frictionY: .02,
     });
-   
-
-    // animate('.square', {
-    //   x: '15rem',
-    //   rotate: '1turn',
-    //   duration: 2000,
-    //   alternate: true,
-    //   loop: true,
-    //   ease: 'inOutQuad',
-    // });
-    // createTimeline()
-    // .add('.mv__item__text ', {
-    //   y: '-=6',
-    //   duration: 50,
-    // }, stagger(10))
-    // .add('.ticker', {
-    //   rotate: 360,
-    //   duration: 1920,
-    // }, '&lt;');
-
-
-    // animate('.mv__item__text', {
-    //   // clipPath: ['inset(0 0 100%)', 'inset(0 0 0%)'],
-    //   translateY: ['20px', '-100px'],
-    //   duration: 1000,
-    //   delay: stagger(100),
-    //   easing: 'easeInOut',
-    //   autoplay: onScroll({ sync: true })
-    // });
-    // animate('.mv__wrapper', {
-    //   translateY: ['0px', '100px'], // Điều chỉnh khoảng cách parallax ở đây
-    //   duration: 2000,
-    //   easing: 'easeInOutQuad',
-    //   autoplay: onScroll({
-    //     sync: true,
-    //   })
-    // });
 
     this.parallaxMV();
-    // this.stickySection();
     this.initPenScrollAnimation();
+    this.initParallaxChange();
+    this.handleParallaxChange();
+
+     window.addEventListener(
+       'resize',
+       () => {
+         if (this.winWidth !== window.innerWidth) {
+           this.winWidth = window.innerWidth;
+           // this.Sticky();
+           this.initParallaxChange();
+           this.handleParallaxChange();
+         }
+       },
+       false
+     );
   }
 
   private parallaxMV = () => {
@@ -149,5 +124,81 @@ export default class Index {
 
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Check initial state
+  }
+
+  /**
+   * Initialize Parallax animation
+   */
+  private initParallaxChange = () => {
+    // Destroy existing parallax if it exists
+    if (this.changeSection) {
+      this.changeSection.destroy();
+      this.changeSection = null;
+    }
+    // Only create new parallax if window width >= 1000
+    if (window.innerWidth >= 1000) {
+      const change = document.getElementById('change');
+      if (change) {
+        this.changeSection = new Parallax(change, {
+          selector: '.layer',
+          pointerEvents: true,
+          relativeInput: true,
+          hoverOnly: true,
+          frictionX: .02,
+          frictionY: .02,
+        });
+      }
+    }
+  }
+
+   
+   private handleParallaxChange = () => {
+     // Only apply custom scroll animation if window width < 1000
+    if (window.innerWidth < 1000) {
+
+      console.log(true);
+      
+      const mv = document.querySelector('.b-change');
+      const mvWrapper = document.querySelector('.b-change .section__inner') as HTMLElement;
+
+      if (!mv || !mvWrapper) return;
+
+      const handleScroll = () => {
+        const rect = mv.getBoundingClientRect();
+        const wrapperRect = mvWrapper.getBoundingClientRect();
+        const sectionHeight = rect.height;
+        const triggerY = rect.top + sectionHeight / 2; // section half height from viewport top
+        const viewportBottom = window.innerHeight;     // viewport bottom from viewport top
+
+        // Before trigger: keep wrapper pushed below (quarter height offset)
+        if (viewportBottom <= triggerY) {
+          mvWrapper.style.transform = `translateY(${wrapperRect.height / 4}px)`;
+          return;
+        }
+        // After trigger: move up with -scroll * 0.5, but clamp by section height
+        const clampedDelta = Math.max(0, viewportBottom - triggerY);
+        const translate = (wrapperRect.height / 4) - clampedDelta * 0.5; // negative as you scroll down
+        mvWrapper.style.transform = `translateY(${translate}px)`;
+      };
+
+      // Remove existing scroll listener to prevent duplicates
+      if (this.mobileChangeScrollHandler) {
+        window.removeEventListener('scroll', this.mobileChangeScrollHandler);
+      }
+      this.mobileChangeScrollHandler = handleScroll;
+      window.addEventListener('scroll', this.mobileChangeScrollHandler);
+    } else {
+      // Reset transform when switching to desktop
+      const mvWrapper = document.querySelector('.b-change .section__inner') as HTMLElement;
+      if (mvWrapper) {
+        // mvWrapper.style.transform = 'translateY(0)';
+        mvWrapper.removeAttribute('style');
+      }
+      // Remove mobile scroll handler on desktop
+      if (this.mobileChangeScrollHandler) {
+        window.removeEventListener('scroll', this.mobileChangeScrollHandler);
+        this.mobileChangeScrollHandler = undefined;
+      }
+    }
   }
 }

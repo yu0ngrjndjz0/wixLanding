@@ -1,6 +1,5 @@
 @charset "utf-8";
 @import '../../_config/_media.css';
-@import 'animate.css';
 
 @media (--pc) {
   .c-card {
@@ -487,11 +486,102 @@
     }
     &__item {
       width: 220px;
+      .c-btn {
+        border: 1px solid rgb(105, 95, 79);
+        color: rgb(105, 95, 79);
+      }
     }
   }
 }
 
 @media (min-width: 769px) and (max-width: 999px) {
+  .c-card {
+    &__list {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-items: center;
+      grid-gap: pcw(200);
+    }
+    &__item {
+      width: pcw(1138);
+      padding: pcw(20) pcw(20) pcw(60);
+      border-radius: pcw(35);
+
+      &:nth-child(1) {
+        margin: 0;
+        order: 2;
+        .c-card {
+          &__logo {
+            margin-block: pcw(20) pcw(30);
+          }
+        }
+      }
+      &:nth-child(2) {
+        order: 1;
+      }
+      &:nth-child(3) {
+        margin: 0;
+        order: 3;
+      }
+    }
+    &__photo {
+      height: pcw(910);
+      border-radius: pcw(22);
+    }
+    &__logo {
+      width: pcw(520);
+      height: pcw(150);
+      margin-block-end: pcw(8);
+      &.-text {
+        margin-block: pcw(10) pcw(45);
+        font-size: pcw(60);
+        line-height: pcw(90);
+      }
+    }
+    &__text {
+      padding: pcw(22) pcw(100) pcw(8);
+      font-size: pcw(25.5);
+    }
+    &__btn {
+      width: 220px;
+    }
+  }
+
+  .c-btn {
+    height: 60px;
+    border-radius: 10px;
+    font-size: 14px;
+  }
+
+  .section {
+    &__heading {
+      &__text {
+        .b-discover & {
+          font-size: pcw(86);
+        }
+        .b-brand & {
+          font-size: pcw(86);
+        }
+        .b-change & {
+          font-size: pcw(86);
+        }
+      }
+    }
+    &__content {
+      .b-change & {
+        p {
+          font-size: 16px;
+          line-height: 25.6px;
+          letter-spacing: normal;
+          &:not(:last-of-type) {
+            margin-block-end: 25.6px;
+          }
+        }
+      }
+    }
+  }
+
   .mv {
     padding: 10% 2%;
     &__item {
@@ -598,6 +688,125 @@
         left: pcw(40);
         top: pcw(-250);
         z-index: 1;
+      }
+    }
+  }
+
+  .b-discover {
+    position: relative;
+    padding-block: pcw(120) pcw(120);
+    .section {
+      &__heading {
+        top: pcw(200);
+        width: pcw(800);
+        margin-inline: auto;
+      }
+    }
+    .c-btn {
+      height: pcw(49);
+      border-radius: pcw(40);
+      font-size: 12px;
+    }
+  }
+
+  .b-change {
+    position: relative;
+    padding: pcw(400) 0;
+    min-height: 0;
+    height: 880px;
+    .layer {
+      position: relative !important;
+    }
+    .section {
+      &__inner {
+        width: pcw(1150);
+      }
+    }
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: pcw(60);
+      width: pcw(800);
+    }
+    &__catch {
+      /* width: 70%; */
+      margin-block-end: pcw(160);
+      text-align: center;
+    }
+    &__item {
+      border-radius: pcw(100);
+    }
+    &__ttl {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.05em;
+    }
+    &__count {
+      font-family: var(--fontBodo);
+      font-size: 72px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+    &__text {
+      font-size: 14px;
+      line-height: 1.3;
+      font-weight: 400;
+    }
+  }
+
+  .b-partners {
+    min-height: 0;
+    padding: pcw(120) pcw(58) pcw(200);
+    overflow: hidden;
+    .section {
+      &__inner {
+        width: pcw(800);
+        margin-inline-start: pcw(15);
+      }
+      &__heading {
+        margin-block-end: pcw(54);
+      }
+      &__content {
+        p {
+          font-size: pcw(25);
+          line-height: pcw(41);
+          letter-spacing: 0.2em;
+          &:not(:last-child) {
+            margin-block-end: pcw(41);
+          }
+        }
+      }
+    }
+    &__photo {
+      position: absolute;
+      top: pcw(100);
+      right: pcw(-65);
+      width: pcw(761);
+      height: pcw(761);
+      &--item {
+        &.-item01 {
+          top: pcw(200) !important;
+        }
+      }
+    }
+  }
+  .b-brand {
+    position: relative;
+    padding: pcw(100) pcw(120) pcw(700);
+    background: rgb(255, 255, 255);
+    z-index: 2;
+    &__list {
+      display: flex;
+      justify-content: center;
+      grid-gap: pcw(140);
+    }
+    &__item {
+      width: 220px;
+    }
+    .section {
+      &__heading {
+        margin-block-end: pcw(50);
       }
     }
   }

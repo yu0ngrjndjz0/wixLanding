@@ -195,6 +195,82 @@
   }
 }
 
+@media (min-width: 769px) and (max-width: 999px) {
+  .header {
+    &__logo {
+      width: 192px;
+      height: 101px;
+      margin-inline-start: 20px;
+      > a {
+        width: 131px;
+        height: 74px;
+      }
+    }
+    &__menu {
+      padding-right: 0;
+      &__nav {
+        padding: 10px 30px;
+        ul {
+          grid-gap: 8px;
+          li {
+            a {
+              display: block;
+              padding: 13px 17px;
+              font-size: rem(15);
+              line-height: 1.4;
+              font-weight: 400;
+            }
+          }
+        }
+      }
+    }
+  }
+  .footer {
+    position: relative;
+    background: #fff;
+    &__wrap {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      padding: pcw(90) pcw(60) 0;
+    }
+    &__ttl {
+      font-family: var(--fontBodo);
+      font-size: rem(20);
+      font-weight: bold;
+    }
+    &__contact {
+      padding-inline-start: pcw(20);
+      font-size: rem(15);
+      line-height: 24px;
+    }
+    &__address {
+      padding-inline-start: pcw(20);
+      font-size: rem(15);
+      line-height: 24px;
+    }
+    &__copyright {
+      padding-inline-start: pcw(20);
+      border-top: 1px solid #999793;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .scrollToTop {
+      border-top: 1px solid #999793;
+      &__link {
+        width: 120px;
+      }
+      &--icon {
+        width: 60px;
+        height: 60px;
+        margin-block-end: 10px;
+      }
+      &--text {
+        font-size: rem(15);
+      }
+    }
+  }
+}
+
 @media (--sp) {
   body,
   button,
