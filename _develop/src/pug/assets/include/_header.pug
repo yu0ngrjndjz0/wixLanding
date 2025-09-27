@@ -2,10 +2,12 @@ include ../../utils/_mixin.pug
 
 header.header#header
   .header__wrap
-    .header__logo
+    h1.header__logo
       a(href="/"+subDirectory).link__alpha logo
     .header__content
-      .header__menu
+      .header__hamburger#js-hamburger
+        span.burger-lines
+      .header__menu#js-menu
         nav.header__menu__nav
           ul
             li: a(href="#").link__alpha FUSION MESO

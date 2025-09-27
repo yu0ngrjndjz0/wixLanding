@@ -1,10 +1,6 @@
 /* よく使うホバー。不要なら削除 */
 @media (any-hover: hover) {
   .link {
-    /*
-      .link__alpha: 透明度アニメーション
-      a.link__text(href="#") リンク文字
-    */
     &__alpha {
       cursor: pointer;
       transition: opacity 0.3s ease;
@@ -12,10 +8,6 @@
         opacity: 0.6;
       }
     }
-    /*
-      .link__color: 色アニメーション
-      a.link__text(href="#") リンク文字
-    */
     &__color {
       cursor: pointer;
       transition: color 0.3s ease;
@@ -23,10 +15,6 @@
         color: #fff;
       }
     }
-    /*
-      .link__text: 下線アニメーション
-      a.link__text(href="#") リンク文字
-    */
     &__text {
       cursor: pointer;
       position: relative;
@@ -50,13 +38,6 @@
         }
       }
     }
-    /*
-      .link__line:複数行対応下線アニメーション
-      a.link__line(href="#")
-        | あいうえお
-        br
-        | かきくけこ
-    */
     &__line {
       padding-bottom: 0.25em;
       background: linear-gradient(currentColor, currentColor) 0 100%/0 1px no-repeat;
@@ -65,13 +46,6 @@
         background-size: 100% 1px;
       }
     }
-    /*
-    .link__fill : 塗りつぶしアニメーション
-    width, height、色などは別途指定。
-
-    a.link__fill(href="#")
-      span リンク文字
-    */
     &__fill {
       position: relative;
       cursor: pointer;
@@ -101,13 +75,6 @@
         }
       }
     }
-
-    /*
-      .link__zoom : anchor内に画像がある場合拡大。他のと重ねがけ出来る。
-      a.link__zoom(href="#")
-        figure
-          img(src="//placehold.jp/dcdcdc/ffffff/100x100.png", alt="dummy")
-    */
     &__zoom {
       figure {
         overflow: hidden;

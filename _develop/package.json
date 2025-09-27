@@ -8,10 +8,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://backlog.caters.jp:8969/backlog/git/FRONTEND/FrontEndTemplate-v2.git"
+    "url": "https://github.com/yu0ngrjndjz0/wixLanding.git"
   },
   "license": "ISC",
-  "author": "matsumoto",
+  "author": "leerynDN",
   "browserslist": [
     ">= 0.25%"
   ],

@@ -6,21 +6,15 @@ export default class Index {
    * Creates an instance of Index.
    */
   private changeSection: Parallax | null;
+  private mvSection: Parallax | null;
   private winWidth: number;
   private mobileChangeScrollHandler?: () => void;
   constructor() {
 
     this.changeSection = null;
+    this.mvSection = null;
     this.winWidth = window.innerWidth;
-    const scene = document.getElementById('scene');
-    new Parallax(scene, {
-      selector: '.layer',
-      pointerEvents: true,
-      relativeInput: true,
-      hoverOnly: true,
-      frictionX: .01,
-      frictionY: .01
-    });
+    
     
     const partners = document.getElementById('partners');
     new Parallax(partners, {
@@ -134,6 +128,8 @@ export default class Index {
     if (this.changeSection) {
       this.changeSection.destroy();
       this.changeSection = null;
+      this.mvSection.destroy();
+      this.mvSection = null;
     }
     // Only create new parallax if window width >= 1000
     if (window.innerWidth >= 1000) {
@@ -146,6 +142,19 @@ export default class Index {
           hoverOnly: true,
           frictionX: .02,
           frictionY: .02,
+        });
+      }
+    }
+    if( window.innerWidth >750) {
+      const scene = document.getElementById('scene');
+      if(scene) {
+        this.mvSection = new Parallax(scene, {
+          selector: '.layer',
+          pointerEvents: true,
+          relativeInput: true,
+          hoverOnly: true,
+          frictionX: .01,
+          frictionY: .01
         });
       }
     }

@@ -4,13 +4,13 @@ include ./_mixin_page.pug
 //- Error prevention. hasAnalysis is set to true when GA or analysis is added (to avoid human error).
 -
   const isSSI = false;
-  const ogImageURL = 'assets/ogp.png';
+  const ogImageURL = 'assets/og_image.png';
   const hasAnalysis = false;
 
 
 block meta
   -
-    var title = "LANDING PAGE";
+    var title = "HOA";
     var description = "";
     var url = "";
 
@@ -28,7 +28,7 @@ block page404
   ErrorCheck();
 
 doctype html
-html(lang='ja')
+html(lang='en')
   head
     include ../assets/include/_ga.pug
     include ../assets/include/_gtm-head.pug

@@ -8,7 +8,7 @@ const isAutoTablet = true; // If true, @media(--tb) is automatically created bas
 const isAutoVW = true; // If true, convert **px -> vw(**) automatically on @media(--sp).
 const remBaseFontSize = 10; // for rem calculation
 const desktopBaseWidth = 1500; // for calculation with vw when tablet
-const mobileBaseWidth = 390; // for vw calculation
+const mobileBaseWidth = 750; // for vw calculation
 
 const vwPassThroughRatio = 1; // for decimal point problems with small values.
 
@@ -39,6 +39,9 @@ module.exports = {
         pw(num) {
           if (Math.abs(num) <= vwPassThroughRatio) return `${num}px`;
           return `${getRoundedVw((num / desktopBaseWidth) * 100)}vw`;
+        },
+        px(num) {
+          return `${num}px`;
         },
         pcw(num) {
           if (Math.abs(num) <= vwPassThroughRatio) return `${num}px`;

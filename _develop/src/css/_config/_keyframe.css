@@ -180,3 +180,26 @@
     transform: scaleX(-1);
   }
 }
+
+@keyframes moveY {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(var(--moveY-distance, 100px));
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes moveX {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(var(--moveX-distance, 100px));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
