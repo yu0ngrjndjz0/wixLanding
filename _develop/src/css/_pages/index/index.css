@@ -408,7 +408,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: pcw(18) 0;
+      padding: pcw(22) 0;
       aspect-ratio: 1 / 1;
       border: 1px solid #fff;
       border-radius: pcw(48);
@@ -417,21 +417,23 @@
       color: #fff;
     }
     &__ttl {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
       letter-spacing: -0.05em;
     }
     &__count {
       font-family: var(--fontBodo);
-      font-size: 72px;
+      font-size: 66px;
       font-weight: 700;
       line-height: 1;
       letter-spacing: -0.05em;
     }
     &__text {
-      font-size: 14px;
+      padding-inline: pcw(20);
+      font-size: 12px;
       line-height: 1.3;
       font-weight: 400;
+      letter-spacing: 0;
     }
   }
 
@@ -932,12 +934,12 @@
       }
       .b-change & {
         p {
-          font-size: 20px;
-          line-height: 32px;
+          font-size: 28px;
+          line-height: 44px;
           letter-spacing: normal;
           color: #fff;
           &:not(:last-of-type) {
-            margin-block-end: 32px;
+            margin-block-end: 44px;
           }
         }
       }
@@ -949,7 +951,7 @@
     width: 100%;
     min-height: 1000px;
     overflow: hidden;
-    padding: 20px 20px 250px;
+    padding: 40px;
     background: var(--color_03);
     transition: transform 0.05s linear;
     will-change: transform;
@@ -979,7 +981,7 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
-        opacity: 0.27;
+        opacity: 0.25;
         z-index: 1;
       }
     }
@@ -996,33 +998,29 @@
 
         .mv__item1 & {
           --moveY-distance: 50px;
-          width: 200px;
-          height: 281px;
-          top: 200px;
-          left: vw(300);
+          width: 178px;
+          top: 300px;
+          left: 280px;
           animation: moveY 6s ease-in-out infinite;
         }
         .mv__item2 & {
           --moveY-distance: 50px;
           width: vw(250);
-          height: vw(242);
           top: 150px;
           left: 30px;
           animation: moveY 10s ease-in-out infinite;
         }
         .mv__item3 & {
-          --moveY-distance: 50px;
-          width: vw(100);
-          height: vw(417);
-          top: 220px;
+          --moveY-distance: 60px;
+          width: 82px;
+          top: 450px;
           right: 80px;
           animation: moveY 8s ease-in-out infinite;
         }
         .mv__item4 & {
           --moveX-distance: 40px;
-          width: pcw(180);
-          height: pcw(401);
-          top: -48px;
+          width: 132px;
+          top: -100px;
           right: 80px;
           animation: moveX 6s ease-in-out infinite;
         }
@@ -1030,7 +1028,7 @@
       &__text {
         position: absolute;
         left: 0;
-        bottom: 50px;
+        bottom: 40px;
         right: 0;
         margin-inline: auto;
         display: flex;
@@ -1042,7 +1040,7 @@
 
         &__inner {
           font-family: var(--fontOpen);
-          font-size: rem(30);
+          font-size: rem(18);
           line-height: 1.8;
           font-weight: 400;
           letter-spacing: 0.35em;
@@ -1187,14 +1185,14 @@
     &__list {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      grid-gap: 15px 25px;
-      width: 300px;
+      grid-gap: px(15) px(25);
+      width: px(300);
       margin-inline: auto;
     }
     &__catch {
-      /* width: 70%; */
+      width: 71%;
       margin-inline: auto;
-      margin-block-end: 80px;
+      margin-block-end: px(80);
       text-align: center;
     }
     &__item {
@@ -1202,28 +1200,28 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 18px 0;
+      padding: px(18) 0;
       aspect-ratio: 1 / 1;
       border: 1px solid #fff;
-      border-radius: 40px;
+      border-radius: px(40);
       background: rgba(249, 237, 240, 0.07);
       text-align: center;
       color: #fff;
     }
     &__ttl {
-      font-size: 14px;
+      font-size: px(12);
       font-weight: 500;
-      letter-spacing: -0.05em;
+      letter-spacing: 0.05em;
     }
     &__count {
       font-family: var(--fontBodo);
-      font-size: 40px;
+      font-size: px(40);
       font-weight: 700;
       line-height: 1;
       letter-spacing: -0.05em;
     }
     &__text {
-      font-size: 12px;
+      font-size: px(10);
       line-height: 1.3;
       font-weight: 400;
     }
