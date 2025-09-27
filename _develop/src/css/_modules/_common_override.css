@@ -1,11 +1,3 @@
-.intersect-elem {
-  opacity: 0;
-  transition: opacity 1s ease-out;
-  &.active {
-    opacity: 1;
-  }
-}
-
 @media (--pc) {
   body,
   button,
@@ -214,9 +206,12 @@
   .main .c-btn * {
     cursor: pointer;
   }
-
   .rotate-in-down-left {
-    animation: rotate-in-down-left 1s ease;
+    opacity: 0;
+    &.active {
+      opacity: 1;
+      animation: rotate-in-down-left 1s ease-out;
+    }
   }
 }
 
