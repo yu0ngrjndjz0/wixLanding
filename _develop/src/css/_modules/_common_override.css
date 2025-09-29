@@ -338,6 +338,10 @@
       flex-shrink: 0;
     }
     &__logo {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 10;
       --backdrop-filter: blur(10px);
       display: flex;
       align-items: center;
@@ -394,7 +398,7 @@
 
     &__hamburger {
       position: absolute;
-      top: 0;
+      top: 50px;
       right: 40px;
       display: flex;
       align-items: center;
