@@ -373,7 +373,7 @@
       overflow: hidden;
       background: var(--color_02);
       &__nav {
-        padding: vw(162) vw(32) 0;
+        padding: vw(250) vw(32) 0;
         overflow-y: auto;
         > ul {
           position: relative;
@@ -398,7 +398,7 @@
 
     &__hamburger {
       position: absolute;
-      top: 50px;
+      top: 80px;
       right: 40px;
       display: flex;
       align-items: center;
